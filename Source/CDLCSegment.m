@@ -7,6 +7,10 @@
 
 #import "CDMachOFile.h"
 #import "CDSection.h"
+#import <sys/param.h>
+#ifndef PAGE_SIZE
+#define PAGE_SIZE 4096
+#endif
 
 #include <CommonCrypto/CommonCrypto.h>
 #include "blowfish.h"
