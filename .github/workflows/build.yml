@@ -1,0 +1,25 @@
+name: Build class-dump for iOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build for iOS device
+        run: |
+          xcodebuild -project class-dump.xcodeproj \
+            -scheme class-dump \
+            -configuration Release \
+            -sdk iphoneos \
+            ARCHS="arm64 arm64e" \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+      - name: Locate binary
+        run: find . -name "class-dump" -type f -perm +111
+      - uses: actions/upload-artifact@v4
+        with:
+          name: class-dump-ios
+          path: build/Release-iphoneos/class-dump
