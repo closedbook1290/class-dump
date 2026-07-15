@@ -3,13 +3,14 @@
 //  This file is part of class-dump, a utility for examining the Objective-C segment of Mach-O files.
 //  Copyright (C) 1997-2019 Steve Nygard.
 
-#import "CDLCBuildVersion.h"
-
-#import "CDMachOFile.h"
-
+// Define PLATFORM_IOSMAC for older SDK versions that don't have it
 #ifndef PLATFORM_IOSMAC
 #define PLATFORM_IOSMAC 6
 #endif
+
+#import "CDLCBuildVersion.h"
+
+#import "CDMachOFile.h"
 
 static NSString *NSStringFromBuildVersionPlatform(uint32_t platform)
 {
