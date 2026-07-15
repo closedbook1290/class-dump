@@ -7,6 +7,10 @@
 
 #import "CDMachOFile.h"
 
+#ifndef PLATFORM_IOSMAC
+#define PLATFORM_IOSMAC 6
+#endif
+
 static NSString *NSStringFromBuildVersionPlatform(uint32_t platform)
 {
     switch (platform) {
